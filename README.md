@@ -1,24 +1,23 @@
-# ppl-landing
+# deckedright
 
-Working draft landing pages for the Yardline pay-per-lead agency.
+Landing pages for **DeckedRight** — a pre-screened deck contractor network serving Grand Rapids and adjacent West Michigan counties.
 
-**Status:** DRAFT. Pre-launch. Do not link externally.
+**Live:** https://kaden-el.github.io/deckedright/
 
-**Real working dir:** `~/Desktop/Claude-Brain/clients/pay-per-lead-agency/`
+**Status:** Draft (pre-launch). Domain not yet purchased — see `clients/pay-per-lead-agency/README.md` in `Claude-Brain`.
 
 ## Pages
 
-- `/` — splash / vertical selector (decks live, bath coming)
-- `/decks.html` — deck builder landing page (form → Make.com webhook → Google Sheet)
+- `/` — DeckedRight landing page (form → Make.com webhook → Google Sheet, all pending wire-up)
 
-## Deployment
+## Pre-launch checklist (gated on Kaden closing first deck contractor)
 
-GitHub Pages: `https://kaden-el.github.io/ppl-landing/`
+- [ ] Buy `deckedright.com` (~$12/yr; .co or get*.com as backup)
+- [ ] Wire form `action` URL to live Make.com webhook (currently placeholder)
+- [ ] Install Google Ads gtag + conversion pixel
+- [ ] Remove `<meta name="robots" content="noindex" />`
+- [ ] Configure custom domain in GitHub Pages settings
 
-## Pre-launch checklist
+## Working dir
 
-- [ ] Pick final agency name. Find-replace `Yardline` across both HTML files.
-- [ ] Wire form `action` URL in `decks.html` to the live Make.com webhook (currently placeholder).
-- [ ] Install Google Ads gtag + conversion pixel before launching ads.
-- [ ] Remove `<meta name="robots" content="noindex" />` from both files at launch.
-- [ ] Optionally swap GitHub Pages URL for a custom domain after LLC + name decisions.
+Full assets + pitch packet + ops docs: `~/Desktop/Claude-Brain/clients/pay-per-lead-agency/`

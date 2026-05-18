@@ -3,36 +3,799 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yardline — Lead Generation for Home Services</title>
+  <title>DeckedRight — Get your deck built right by a vetted Grand Rapids contractor</title>
+  <meta name="description" content="Get connected with a pre-screened deck contractor in West Michigan. Free for homeowners. Callback in 1-2 hours. Only 3 vetted deck builders in our network." />
   <meta name="robots" content="noindex" />
+
+  <!-- TODO Cowork: install Google Ads conversion pixel here once campaign is live -->
+  <!-- TODO Cowork: install Meta Pixel here once Phase 3 retargeting kicks in -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; max-width: 600px; margin: 60px auto; padding: 0 24px; line-height: 1.6; color: #1a1a1a; }
-    h1 { font-size: 32px; letter-spacing: -0.02em; }
-    a { color: #2e4d2e; }
-    .vertical { background: #faf7f2; border: 1px solid #e7e3dc; padding: 20px; border-radius: 10px; margin: 16px 0; }
-    .vertical h2 { font-size: 20px; margin-bottom: 8px; }
-    .vertical p { color: #4a4a4a; margin-bottom: 12px; font-size: 15px; }
-    .status { font-size: 13px; color: #999; }
+    :root {
+      --wood: #3D2914;
+      --wood-soft: #5A4530;
+      --cedar: #C97B3F;
+      --cedar-dark: #A85F2A;
+      --cream: #FAF7F2;
+      --cream-dark: #F0EBE0;
+      --forest: #2D4A2B;
+      --text: #1A1410;
+      --muted: #6B5F52;
+      --border: #E6DECF;
+      --max-width: 760px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top bar */
+    .topbar {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--cream);
+    }
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+      color: var(--wood);
+    }
+    .logo-mark {
+      color: var(--cedar);
+    }
+    .topbar-cta {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 56px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent 0,
+        transparent 60px,
+        rgba(61, 41, 20, 0.04) 60px,
+        rgba(61, 41, 20, 0.04) 62px
+      );
+      pointer-events: none;
+    }
+    .hero .container { position: relative; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cedar-dark);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: clamp(34px, 5.5vw, 52px);
+      margin-bottom: 20px;
+      color: var(--wood);
+    }
+    .hero h1 .underline {
+      background-image: linear-gradient(transparent 70%, rgba(201, 123, 63, 0.35) 70%);
+      padding-bottom: 2px;
+    }
+    .hero p.lede {
+      font-size: 19px;
+      color: var(--wood-soft);
+      max-width: 580px;
+      margin-bottom: 32px;
+    }
+    .hero-cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--wood);
+      color: var(--cream);
+      padding: 16px 28px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: #2a1c0d; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .hero-trust {
+      margin-top: 28px;
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
+    .hero-trust span::before {
+      content: "✓";
+      color: var(--cedar);
+      font-weight: 700;
+    }
+
+    /* Trust strip */
+    .trust-strip {
+      padding: 32px 0;
+      background: var(--wood);
+      color: var(--cream);
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .trust-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+    .trust-cell .number {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--cedar);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .trust-cell .label {
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* Section base */
+    .section {
+      padding: 64px 0;
+    }
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cedar-dark);
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      margin-bottom: 16px;
+      color: var(--wood);
+    }
+    .section .lede {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+
+    /* How it works */
+    .how {
+      background: var(--cream-dark);
+    }
+    .steps {
+      display: grid;
+      gap: 20px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--cedar);
+      line-height: 1;
+    }
+    .step h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: var(--wood);
+    }
+    .step p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    /* Why us */
+    .why-grid {
+      display: grid;
+      gap: 24px;
+    }
+    .why-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 26px;
+    }
+    .why-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--wood);
+    }
+    .why-card p {
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    /* Form */
+    .form-section {
+      background: var(--wood);
+      color: var(--cream);
+      padding: 64px 0 72px;
+    }
+    .form-section h2 {
+      color: var(--cream);
+      text-align: center;
+      font-size: clamp(28px, 4vw, 36px);
+      margin-bottom: 12px;
+    }
+    .form-section .form-lede {
+      text-align: center;
+      color: rgba(250, 247, 242, 0.85);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      font-size: 16px;
+    }
+    .lead-form {
+      max-width: 520px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .form-row { display: grid; gap: 6px; }
+    .form-row label {
+      font-weight: 500;
+      font-size: 13px;
+      color: rgba(250, 247, 242, 0.8);
+      letter-spacing: 0.02em;
+    }
+    .form-row .req::after { content: " *"; color: var(--cedar); }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      padding: 13px 14px;
+      border: 1.5px solid rgba(250, 247, 242, 0.2);
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: inherit;
+      background: rgba(250, 247, 242, 0.05);
+      color: var(--cream);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .form-row input::placeholder { color: rgba(250, 247, 242, 0.4); }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--cedar);
+      background: rgba(250, 247, 242, 0.08);
+    }
+    .form-row select option { background: var(--wood); color: var(--cream); }
+    .form-row textarea { resize: vertical; min-height: 90px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+    .submit-btn {
+      background: var(--cedar);
+      color: var(--wood);
+      border: none;
+      padding: 17px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 12px;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover { background: #e0894a; }
+    .submit-btn:active { transform: scale(0.98); }
+    .submit-btn:disabled { opacity: 0.6; cursor: wait; }
+    .form-fineprint {
+      font-size: 13px;
+      color: rgba(250, 247, 242, 0.65);
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    /* Thanks state */
+    .thanks {
+      display: none;
+      text-align: center;
+      padding: 56px 24px;
+      background: var(--forest);
+      color: var(--cream);
+      border-radius: 12px;
+      margin: 0 auto;
+      max-width: 520px;
+    }
+    .thanks.show { display: block; }
+    .thanks h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .thanks p { font-size: 16px; opacity: 0.95; }
+    .thanks .checkmark {
+      width: 56px;
+      height: 56px;
+      background: var(--cedar);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--wood);
+      margin: 0 auto 20px;
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: white;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 18px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 16px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--wood);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 24px;
+      color: var(--cedar);
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-body {
+      padding: 0 22px 20px;
+      color: var(--muted);
+      font-size: 15.5px;
+    }
+
+    /* Closing CTA */
+    .closing {
+      padding: 72px 0;
+      text-align: center;
+      background: var(--cream-dark);
+    }
+    .closing h2 {
+      font-size: clamp(28px, 4vw, 36px);
+      color: var(--wood);
+      margin-bottom: 16px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .closing p {
+      color: var(--muted);
+      margin-bottom: 28px;
+      font-size: 17px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 36px 0 28px;
+      background: var(--wood);
+      color: rgba(250, 247, 242, 0.65);
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: rgba(250, 247, 242, 0.85); text-decoration: underline; }
+    footer .footer-brand {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 16px;
+      color: var(--cream);
+      margin-bottom: 6px;
+    }
+    footer .footer-tagline {
+      color: rgba(250, 247, 242, 0.5);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    footer .footer-meta {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(250, 247, 242, 0.15);
+    }
   </style>
 </head>
 <body>
-  <h1>Yardline</h1>
-  <p>A pay-per-lead network connecting West Michigan homeowners with vetted local contractors. <em>Site is in draft.</em></p>
 
-  <div class="vertical">
-    <h2>Deck Builders</h2>
-    <p>Looking to build or replace a deck in Grand Rapids? Get connected with a pre-vetted contractor.</p>
-    <a href="/decks.html">→ Get a free deck consultation</a>
-    <div class="status">Status: Vertical 1 — launching first</div>
-  </div>
+  <header class="topbar">
+    <div class="container">
+      <div class="logo">Decked<span class="logo-mark">Right</span></div>
+      <div class="topbar-cta">Grand Rapids, MI</div>
+    </div>
+  </header>
 
-  <div class="vertical">
-    <h2>Bathroom Remodeling</h2>
-    <p>Looking to remodel your bath? Get connected with a pre-vetted contractor.</p>
-    <p class="status">Coming soon — Vertical 2</p>
-  </div>
+  <section class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">West Michigan Deck Network</span>
+      <h1>Get your deck <span class="underline">built right</span> — by a vetted Grand Rapids contractor.</h1>
+      <p class="lede">
+        We connect Kent County homeowners with a small, pre-screened network of local deck builders. Free quote, callback in 1–2 hours, no follow-up from ten different companies.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#start" class="btn-primary">Start your free quote →</a>
+      </div>
+      <div class="hero-trust">
+        <span>Free for homeowners</span>
+        <span>Local contractors only</span>
+        <span>No spam, ever</span>
+      </div>
+    </div>
+  </section>
 
-  <hr style="margin: 40px 0; border: none; border-top: 1px solid #e7e3dc;" />
-  <p style="font-size: 13px; color: #999;">Yardline · Grand Rapids, MI</p>
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-cell">
+          <div class="number">3</div>
+          <div class="label">Vetted Deck Builders</div>
+        </div>
+        <div class="trust-cell">
+          <div class="number">1–2 hr</div>
+          <div class="label">Average Callback Time</div>
+        </div>
+        <div class="trust-cell">
+          <div class="number">$0</div>
+          <div class="label">Cost to Homeowner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how">
+    <div class="container">
+      <span class="section-eyebrow">How it works</span>
+      <h2>Three steps. About six minutes total.</h2>
+      <p class="lede">Most homeowners spend two weekends Googling deck contractors and getting calls from companies they didn't ask for. We do that work for you.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Tell us about your project</h3>
+            <p>60-second form below. Project type, timeline, budget range, and your ZIP. That's it — no account, no email-bait.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Quick 2-minute call</h3>
+            <p>We call you back within 1–2 hours to confirm a few details and make sure your project fits our network. If it's not a fit, we'll tell you straight.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Get connected with a builder</h3>
+            <p>We hand your project to one vetted deck contractor in your area. They call you directly within hours — usually under one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-eyebrow">What makes DeckedRight different</span>
+      <h2>The reason we're not Angi.</h2>
+      <p class="lede">Big lead-gen sites sell your project to every contractor who'll pay for it. You get the same call from eight companies for a week. We do the opposite.</p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>One project, one contractor.</h3>
+          <p>Your project goes to exactly one deck builder — not five. No bidding war on you, no contractor cattle-call clogging your phone.</p>
+        </div>
+        <div class="why-card">
+          <h3>Three deck builders. That's it.</h3>
+          <p>Our entire West Michigan deck network is capped at three contractors. We hand-pick who we work with, and we only add a builder when one moves out.</p>
+        </div>
+        <div class="why-card">
+          <h3>We get paid by the contractor.</h3>
+          <p>You don't owe us a dime. The contractor pays a small fee for the qualified introduction. Our incentive is to send them homeowners worth their time — which means filtering hard on our end.</p>
+        </div>
+        <div class="why-card">
+          <h3>If we can't help, we say so.</h3>
+          <p>Wrong budget, wrong timeline, project outside Kent and adjacent counties — we'll tell you in the qualification call and point you somewhere better. No bait-and-switch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="start">
+    <div class="container">
+      <h2>Start your free quote</h2>
+      <p class="form-lede">Takes about 60 seconds. We'll text and call within 1–2 hours.</p>
+
+      <form class="lead-form" id="leadForm" method="POST" action="https://hook.example.com/REPLACE_WITH_WEBHOOK">
+        <!-- TODO Cowork: replace `action` URL with the live Make.com webhook once provisioned -->
+
+        <input type="hidden" name="vertical" value="decks" />
+        <input type="hidden" name="agency_name" value="DeckedRight" />
+        <input type="hidden" name="landing_path" id="landingPath" value="" />
+        <input type="hidden" name="referrer" id="referrerField" value="" />
+        <input type="hidden" name="utm_source" id="utmSource" value="" />
+        <input type="hidden" name="utm_medium" id="utmMedium" value="" />
+        <input type="hidden" name="utm_campaign" id="utmCampaign" value="" />
+        <input type="hidden" name="lead_id" id="leadId" value="" />
+        <input type="hidden" name="form_started_at" id="formStartedAt" value="" />
+
+        <div class="form-row">
+          <label for="name" class="req">Full name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" placeholder="First and last" />
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="phone" class="req">Phone</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(616) 555-1234" />
+          </div>
+          <div class="form-row">
+            <label for="email" class="req">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="zip" class="req">ZIP code</label>
+            <input type="text" id="zip" name="zip" required pattern="\d{5}" maxlength="5" autocomplete="postal-code" placeholder="49503" />
+          </div>
+          <div class="form-row">
+            <label for="project_type" class="req">Project type</label>
+            <select id="project_type" name="project_type" required>
+              <option value="">Select…</option>
+              <option value="new_build">New deck build</option>
+              <option value="replacement">Replacing existing deck</option>
+              <option value="repair">Repair or refinish</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="timeline" class="req">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="">Select…</option>
+              <option value="asap">As soon as possible</option>
+              <option value="1-3_months">Next 1–3 months</option>
+              <option value="3-6_months">Next 3–6 months</option>
+              <option value="6+_months">6+ months out</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget" class="req">Budget range</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select…</option>
+              <option value="under_8k">Under $8,000</option>
+              <option value="8-15k">$8,000 – $15,000</option>
+              <option value="15-30k">$15,000 – $30,000</option>
+              <option value="30-50k">$30,000 – $50,000</option>
+              <option value="50k+">$50,000+</option>
+              <option value="not_sure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="details">Project details (optional)</label>
+          <textarea id="details" name="details" placeholder="Size, materials (composite/wood), anything else worth mentioning…"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Get connected with a vetted builder →</button>
+
+        <p class="form-fineprint">
+          By submitting, you agree we may call or text you about your project. Your info is shared only with one vetted contractor — never sold.
+        </p>
+      </form>
+
+      <div class="thanks" id="thanksMsg">
+        <div class="checkmark">✓</div>
+        <h3>Thanks — we've got it.</h3>
+        <p>One of our team will call you within 1–2 hours to confirm a few details. After that, we'll hand your project to one of our vetted Grand Rapids deck contractors. They'll reach out the same day.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="section-eyebrow">Common questions</span>
+      <h2>Things homeowners ask before submitting.</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Is this really free?</summary>
+          <div class="faq-body">Yes. Free to you, always. The deck contractor pays DeckedRight a small fee when we send them a pre-qualified homeowner. You owe us nothing, ever — not for the introduction, not for the project, not later.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does "vetted" actually mean?</summary>
+          <div class="faq-body">Every contractor in our network is licensed, insured, and has been doing deck work in West Michigan for at least three years. We've reviewed their portfolio, their references, and their reviews before they got a spot. We cap the network at three contractors per metro on purpose — every project gets real attention.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I don't like the contractor you connect me with?</summary>
+          <div class="faq-body">You're under zero obligation. If the first contractor isn't the right fit — wrong style, didn't show up on time, anything — text us. We'll loop in another one from the network. If the network still isn't right for your project, we'll point you elsewhere and the whole thing costs you nothing.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How fast will I hear back?</summary>
+          <div class="faq-body">From us: 1–2 hours during business hours (Mon–Sat 8am–8pm ET). From the contractor: usually under 4 hours, often under 1. Speed-to-lead is the biggest factor in close rate, and our contractors know it.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you work in my area?</summary>
+          <div class="faq-body">We cover Kent County and the adjacent counties: Ottawa, Allegan, Ionia, Barry, and Montcalm. If you're outside that radius, we'll tell you on the qualification call and point you to a contractor who covers your area.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What kinds of decks do your contractors build?</summary>
+          <div class="faq-body">New builds, full replacements, and repairs across pressure-treated, cedar, composite (Trex, TimberTech, Fiberon), and PVC. From a 12×16 starter deck to a multi-level outdoor living buildout with lighting and railings.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I see contractor reviews before I submit?</summary>
+          <div class="faq-body">We don't pre-publish our network members publicly — it's part of how we keep the network small and how we control which contractor your specific project routes to. Once you submit and we qualify the project, we tell you exactly who we're sending it to, and you can look them up before they call.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why "DeckedRight"?</summary>
+          <div class="faq-body">Because every homeowner we've talked to has the same nightmare story — they hired a contractor on a referral or a Google ad and got burned. We exist for the homeowners who'd rather get one good introduction than ten bad bids. Decks built right, the first time.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container">
+      <h2>Ready to skip the contractor hunt?</h2>
+      <p>60-second form. We'll do the rest.</p>
+      <a href="#start" class="btn-primary">Start your free quote →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-brand">DeckedRight</div>
+      <div class="footer-tagline">Grand Rapids · Kent + adjacent counties</div>
+      <div>
+        <a href="mailto:hello@deckedright.com">hello@deckedright.com</a>
+      </div>
+      <div class="footer-meta">
+        © 2026 DeckedRight · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Capture landing context for the webhook payload.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      document.getElementById('landingPath').value = window.location.pathname;
+      document.getElementById('referrerField').value = document.referrer || '(direct)';
+      document.getElementById('utmSource').value = params.get('utm_source') || '';
+      document.getElementById('utmMedium').value = params.get('utm_medium') || '';
+      document.getElementById('utmCampaign').value = params.get('utm_campaign') || '';
+      document.getElementById('formStartedAt').value = new Date().toISOString();
+
+      function uuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+      document.getElementById('leadId').value = uuid();
+    })();
+
+    document.getElementById('leadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (v, k) { payload[k] = v; });
+      payload.submitted_at = new Date().toISOString();
+
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+      })
+        .then(function () {
+          form.style.display = 'none';
+          document.getElementById('thanksMsg').classList.add('show');
+          window.scrollTo({ top: document.getElementById('thanksMsg').offsetTop - 60, behavior: 'smooth' });
+          // TODO Cowork: fire Google Ads conversion + Meta Pixel Lead event here once installed.
+        })
+        .catch(function () {
+          form.style.display = 'none';
+          document.getElementById('thanksMsg').classList.add('show');
+        });
+    });
+  </script>
 </body>
 </html>
