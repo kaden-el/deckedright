@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grand Rapids Deck Builder — Free Consultation | [Agency Name TBD]</title>
+  <meta name="description" content="Get a free consultation with a vetted Grand Rapids deck contractor. We pre-qualify every lead — only serious projects get connected." />
+  <meta name="robots" content="noindex" /> <!-- DRAFT: remove this line on deploy -->
+
+  <!-- TODO Cowork: install Google Ads conversion pixel here once campaign is live -->
+  <!-- TODO Cowork: install Meta Pixel here once Phase 3 retargeting kicks in -->
+
+  <style>
+    :root {
+      --primary: #2e4d2e;       /* deep deck-stain green */
+      --accent: #d97706;         /* warm cedar accent */
+      --bg: #faf7f2;             /* warm off-white */
+      --text: #1a1a1a;
+      --muted: #4a4a4a;
+      --border: #e7e3dc;
+      --max-width: 720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 48px;
+      text-align: center;
+      background: linear-gradient(180deg, var(--primary) 0%, #1f361f 100%);
+      color: white;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .hero p.lede {
+      font-size: 18px;
+      opacity: 0.95;
+      margin-bottom: 32px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero .badges {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 24px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .hero .badges span { display: inline-flex; align-items: center; gap: 6px; }
+    .hero .badges span::before { content: "✓"; color: var(--accent); font-weight: 700; }
+
+    /* Form section */
+    .form-section {
+      padding: 48px 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section h2 {
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .form-section p.subhead {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .lead-form {
+      max-width: 520px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .form-row { display: grid; gap: 6px; }
+    .form-row label {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+      transition: border-color 0.15s;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .form-row textarea { resize: vertical; min-height: 80px; }
+    .form-row .req::after { content: " *"; color: var(--accent); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .submit-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 16px 24px;
+      font-size: 17px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, transform 0.1s;
+      margin-top: 8px;
+    }
+    .submit-btn:hover { background: #1f361f; }
+    .submit-btn:active { transform: scale(0.98); }
+
+    .form-fineprint {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* How it works */
+    .how-section {
+      padding: 56px 0;
+      background: var(--bg);
+    }
+    .how-section h2 {
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+    .how-step {
+      background: white;
+      padding: 24px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .how-step .step-num {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    .how-step h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+    .how-step p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Trust strip */
+    .trust-section {
+      padding: 40px 0;
+      background: white;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .trust-section p {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      padding: 32px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; }
+
+    /* Thank you state */
+    .thanks {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      background: var(--primary);
+      color: white;
+      border-radius: 12px;
+      margin-top: 24px;
+    }
+    .thanks.show { display: block; }
+    .thanks h3 { font-size: 22px; margin-bottom: 12px; }
+    .thanks p { opacity: 0.95; }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Get a vetted Grand Rapids deck contractor for your project</h1>
+      <p class="lede">
+        We connect Kent County homeowners with a small, exclusive network of pre-screened deck contractors.
+        Only serious projects get connected — no spam, no follow-up from 8 different companies.
+      </p>
+      <div class="badges">
+        <span>Kent + adjacent counties</span>
+        <span>Vetted contractors only</span>
+        <span>Free for homeowners</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="container">
+      <h2>Start a free consultation</h2>
+      <p class="subhead">Takes 60 seconds. We'll call you within 1–2 hours to confirm your project and connect you.</p>
+
+      <form class="lead-form" id="leadForm" method="POST" action="https://hook.example.com/REPLACE_WITH_WEBHOOK">
+        <!-- TODO Cowork: replace `action` URL with the live Make.com webhook OR Google Form submit URL once provisioned -->
+
+        <input type="hidden" name="vertical" value="decks" />
+        <input type="hidden" name="agency_name" value="[Agency Name TBD]" />
+        <input type="hidden" name="landing_path" id="landingPath" value="" />
+        <input type="hidden" name="referrer" id="referrerField" value="" />
+        <input type="hidden" name="utm_source" id="utmSource" value="" />
+        <input type="hidden" name="utm_medium" id="utmMedium" value="" />
+        <input type="hidden" name="utm_campaign" id="utmCampaign" value="" />
+        <input type="hidden" name="lead_id" id="leadId" value="" />
+
+        <div class="form-row">
+          <label for="name" class="req">Full name</label>
+          <input type="text" id="name" name="name" required autocomplete="name" />
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="phone" class="req">Phone</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(616) 555-1234" />
+          </div>
+          <div class="form-row">
+            <label for="email" class="req">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="zip" class="req">ZIP code</label>
+            <input type="text" id="zip" name="zip" required pattern="\d{5}" maxlength="5" autocomplete="postal-code" placeholder="49503" />
+          </div>
+          <div class="form-row">
+            <label for="project_type" class="req">Project type</label>
+            <select id="project_type" name="project_type" required>
+              <option value="">Select…</option>
+              <option value="new_build">New deck build</option>
+              <option value="replacement">Replacing existing deck</option>
+              <option value="repair">Deck repair / refinishing</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-row">
+            <label for="timeline" class="req">Timeline</label>
+            <select id="timeline" name="timeline" required>
+              <option value="">Select…</option>
+              <option value="asap">As soon as possible</option>
+              <option value="1-3_months">Next 1–3 months</option>
+              <option value="3-6_months">Next 3–6 months</option>
+              <option value="6+_months">6+ months out</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="budget" class="req">Budget range</label>
+            <select id="budget" name="budget" required>
+              <option value="">Select…</option>
+              <option value="under_8k">Under $8,000</option>
+              <option value="8-15k">$8,000 – $15,000</option>
+              <option value="15-30k">$15,000 – $30,000</option>
+              <option value="30-50k">$30,000 – $50,000</option>
+              <option value="50k+">$50,000+</option>
+              <option value="not_sure">Not sure yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="details">Project details (optional)</label>
+          <textarea id="details" name="details" placeholder="Size, materials, anything else worth mentioning…"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Get connected</button>
+
+        <p class="form-fineprint">
+          By submitting, you agree we may call/text you about your project. Your info is shared only with our vetted contractor — never sold.
+        </p>
+      </form>
+
+      <div class="thanks" id="thanksMsg">
+        <h3>Thanks — got it.</h3>
+        <p>Dylan will call you within 1–2 hours to confirm a few details. After that, we'll connect you with one of our vetted Grand Rapids deck contractors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-section">
+    <div class="container">
+      <h2>How it works</h2>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="step-num">1</div>
+          <h3>Submit the form</h3>
+          <p>60 seconds. Tell us about your project — type, timeline, budget range.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">2</div>
+          <h3>Quick 2-minute call</h3>
+          <p>Our team calls you within 1–2 hours to confirm a few details and make sure we're the right fit.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-num">3</div>
+          <h3>Get connected</h3>
+          <p>We hand your project to one vetted deck contractor in your area. They reach out within hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section">
+    <div class="container">
+      <p>
+        We're a Grand Rapids–based service that vets local deck contractors and connects them with homeowners who are serious about their project.
+        We work with only 3 deck contractors in the Kent County area — no spam, no contractor cattle-call, no surprise bills to you.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>
+        [Agency Name TBD] · Grand Rapids, MI · <a href="mailto:kaden@elzingacreativestudio.com">kaden@elzingacreativestudio.com</a>
+        <br/>
+        <a href="/privacy">Privacy policy</a> · <a href="/terms">Terms</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Capture landing context for the webhook payload.
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      document.getElementById('landingPath').value = window.location.pathname;
+      document.getElementById('referrerField').value = document.referrer || '(direct)';
+      document.getElementById('utmSource').value = params.get('utm_source') || '';
+      document.getElementById('utmMedium').value = params.get('utm_medium') || '';
+      document.getElementById('utmCampaign').value = params.get('utm_campaign') || '';
+
+      // Generate a stable lead ID per submission
+      function uuid() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+          var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+          return v.toString(16);
+        });
+      }
+      document.getElementById('leadId').value = uuid();
+    })();
+
+    // Submit handler — POST as JSON to webhook, show thank-you on success.
+    document.getElementById('leadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var form = e.target;
+      var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function (v, k) { payload[k] = v; });
+      payload.submitted_at = new Date().toISOString();
+
+      var btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        keepalive: true
+      })
+        .then(function (r) {
+          // Always show thank-you (don't expose webhook errors to user).
+          form.style.display = 'none';
+          document.getElementById('thanksMsg').classList.add('show');
+          // TODO Cowork: fire Google Ads conversion + Meta Pixel Lead event here once installed.
+        })
+        .catch(function () {
+          form.style.display = 'none';
+          document.getElementById('thanksMsg').classList.add('show');
+        });
+    });
+  </script>
+</body>
+</html>
